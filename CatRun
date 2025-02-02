@@ -1,0 +1,22 @@
+from flask import Flask, jsonify
+import subprocess
+
+app = Flask(__name__)
+
+@app.route('/Userland/Tasker/Auto-Run', methods=['GET'])
+def auto_run():
+    try:
+        # Run the Git commands
+        subprocess.run(['git', 'checkout', 'abc1234'], check=True)  # Replace with your commit hash
+        subprocess.run(['git', 'revert', 'abc1234'], check=True)    # Replace with your commit hash
+        subprocess.run(['git', 'cherry-pick', 'ghi9012'], check=True)  # Replace with your commit hash
+        subprocess.run(['git', 'cherry-pick', 'def5678'], check=True)  # Replace with your commit hash
+        subprocess.run(['git', 'cherry-pick', 'abc1234'], check=True)  # Replace with your commit hash
+
+        return jsonify({'message': 'Git commands executed successfully!'}), 200
+    except subprocess.CalledProcessError as e:
+        return jsonify({'error': str(e)}), 500
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)  # Change port as needed
+end
