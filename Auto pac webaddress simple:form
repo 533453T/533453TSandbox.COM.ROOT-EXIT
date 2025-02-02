@@ -1,0 +1,46 @@
+from flask import Flask, request, jsonify
+import random
+
+app = Flask(__name__)
+
+# Simulated thought pathways
+thought_pathways = {
+    "pathway_1": "Exploring the concept of digital telepathy.",
+    "pathway_2": "Analyzing quantum computing principles.",
+    "pathway_3": "Investigating AI ethics and consciousness."
+}
+
+@app.route('/think', methods=['POST'])
+def think():
+    try:
+        # Get the JSON payload
+        data = request.json
+        input_thought = data.get('thought')
+        url = data.get('url')  # Extract the URL from the payload
+
+        # Process the URL (for demonstration, we'll just return it)
+        if url:
+            print(f"Processing URL: {url}")
+
+        if input_thought not in thought_pathways:
+            raise ValueError("Invalid thought pathway.")
+        
+        response = thought_pathways[input_thought]
+        return jsonify({'response': response, 'url': url}), 200
+
+    except ValueError as ve:
+        return jsonify({'error': str(ve)}), 400
+    except Exception as e:
+        return jsonify({'error': 'An unexpected error occurred.'}), 500
+
+@app.route('/quantum_decision', methods=['GET'])
+def quantum_decision():
+    decision = random.choice(list(thought_pathways.keys()))
+    return jsonify({'quantum_decision': decision, 'description': thought_pathways[decision]}), 200
+
+@app.route('/greet', methods=['GET'])
+def greet():
+    return jsonify({'message': 'Hello, welcome to the Sandbox!'}), 200
+
+if __name__ == '__main__':
+    app.run(debug=True)
