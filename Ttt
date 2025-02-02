@@ -1,0 +1,4 @@
+def set_resource_limits(memory_limit_mb):
+resource.setrlimit(resource.RLIMIT_AS, (memory_limit_mb * 1024 * 1024, resource.RLIM_INFINITY)) show proof of concept, plus detailed coding for versioning systems 0{Run}ADD/ALL for fuction on https://github.com/username/533453T.git As Force trough before any VPN Instances can run. No root needed running .m/andriod/frames
+def set_resource_limits(memory_limit_mb):
+resource.setrlimit(resource.RLIMIT_AS, (memory_limit_mb * 1024 * 1024, resource.RLIM_INFINITY)) show proof of concept, plus detailed coding for versioning systems 0{Run}ADD/ALL for fuction on https://github.com/username/533453T.git As Force trough before any VPN Instances can run. No root needed running .m/andriod/frames
