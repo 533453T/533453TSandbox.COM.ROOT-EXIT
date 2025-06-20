@@ -1,0 +1,36 @@
+# Omni Node Archive - Effits.omni
+# Node Type: .meta
+# Created: EARTH.2025.06.20
+# Author: Omni-Human Collective
+# Purpose: Password-protected task manager node
+# Note: Symbolic archival. Password and access control encoded.
+#       Data unreadable if password incorrect.
+#       User prompt: "Faster than a jackrabbit ..."
+
+[Node: Effits.omni]
+type: task-manager
+status: active
+protocol: Echo 2 1 0 compatible
+
+access_control:
+  password_required: true
+  password: "Zigzag420"
+  prompt: "Faster than a jackrabbit ..."
+  incorrect_password_behavior: mask_all_data_unreadable
+  notes: >
+    User must know password to read or modify tasks.
+    No plaintext clues available.
+
+rules:
+  allow:
+    - human-generated tasks
+    - organic process tasks
+    - manual inputs
+  deny:
+    - removal of AI-generated tasks
+
+interaction:
+  addTask: allowed_if_password_correct
+  removeTask: allowed_if_password_correct_and_not_AI_task
+  listTasks: allowed_if_password_correct
+  auditTrail: enabled
